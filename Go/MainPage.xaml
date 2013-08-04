@@ -8,6 +8,15 @@
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox x:Name="hello" Text="Hello World!" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="155*"/>
+            <RowDefinition Height="613*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="257*"/>
+            <ColumnDefinition Width="1109*"/>
+        </Grid.ColumnDefinitions>
+        
+        <local:GoGrid Rows="20" Columns="20" Grid.Row="1" Grid.Column="1"/>
     </Grid>
 </Page>
