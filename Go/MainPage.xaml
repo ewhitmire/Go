@@ -8,6 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-
+        <TextBox x:Name="hello" Text="Hello World!" />
     </Grid>
 </Page>
