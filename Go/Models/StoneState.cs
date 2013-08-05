@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines values that indicate the visual state of a board space.
     /// </summary>
-    public enum BoardSpaceState
+    public enum StoneState
     {
         None,
         PlayerOne,

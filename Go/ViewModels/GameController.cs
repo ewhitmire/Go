@@ -8,12 +8,18 @@ using System.Threading.Tasks;
 
 namespace Go.ViewModels
 {
-    class GameController
+    class GameController : BindableBase
     {
-
         public GameController(Game game)
         {
             this.Game = game;
+            game.GameBoard.BoardChanged += GameBoard_BoardChanged;
+        }
+
+        void GameBoard_BoardChanged(object sender, Board.BoardChangedEventArgs state)
+        {
+            OnPropertyChanged(String.Format("Item[{0},{1}]",
+                    state.StoneSpace.Row, state.StoneSpace.Column));
         }
 
         /// <summary>
@@ -41,5 +47,16 @@ namespace Go.ViewModels
                     new RelayCommand<Space>(p => Game.MakeMove(p.Row, p.Column)));
             }
         }
+
+        private StoneState GetStoneState(String index)
+        {
+            var rc = index.Split(',');
+            int row = Int32.Parse(rc[0]);
+            int col = Int32.Parse(rc[1]);
+
+            return Game.GameBoard.Grid[row, col];
+        }
+
+        public StoneState this[String index] { get { return GetStoneState(index); } }
     }
 }

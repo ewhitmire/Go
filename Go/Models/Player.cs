@@ -10,11 +10,10 @@ namespace Go
         public Color MyColor { get; private set; }
         public float Score { get; private set; }
 
-        private Color color;
 
         public Player(Color color)
         {
-            this.color = color;
+            this.MyColor = color;
         }
     }
 }

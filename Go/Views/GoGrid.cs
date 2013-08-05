@@ -124,6 +124,10 @@ namespace Go
                     stone.SetBinding(StonePosition.CommandProperty,
                             new Binding { Path = new PropertyPath("MoveCommand") });
                     stone.CommandParameter = new Space(r, c);
+
+                    stone.SetBinding(StonePosition.SpaceStateProperty,
+                        new Binding { Path = new PropertyPath(String.Format("[{0},{1}]", r, c)) });
+                    
                 }
             }
         }

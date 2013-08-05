@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Go.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Go
 {
-    class Game
+    class Game : BindableBase
     {
         public Board GameBoard { get; private set; }
         public Player Player1 { get; private set; }
@@ -21,7 +22,7 @@ namespace Go
         public Game(int boardSize)
         {
             this.GameBoard = new Board(boardSize);
-            this.Player1 = new Player(Color.BLACK);
+            this.Player1 = new Player(Color.WHITE);
             this.Player2 = new Player(Color.BLACK);
             this.History = new List<Move>();
             this.WhoseTurn = Player1;

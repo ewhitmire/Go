@@ -1,13 +1,29 @@
-﻿using System;
+﻿using Go.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Go
 {
-    enum Color
+    public enum Color
     {
-        BLACK=1,
-        WHITE=2
+        BLACK,
+        WHITE
+    }
+
+    public static class ColorExtensions
+    {
+        public static StoneState ToStoneState(this Color value)
+        {
+            switch(value)
+            {
+                case Color.BLACK:
+                    return StoneState.PlayerOne;
+                case Color.WHITE:
+                    return StoneState.PlayerTwo;
+            }
+            return StoneState.None;
+        }
     }
 }

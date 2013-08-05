@@ -106,10 +106,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Space.cs" />
-    <Compile Include="ViewModels\BoardSpaceState.cs" />
+    <Compile Include="Models\StoneState.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="ViewModels\GameController.cs" />
@@ -120,7 +121,6 @@
     </Compile>
     <Compile Include="Models\Move.cs" />
     <Compile Include="Models\Player.cs" />
-    <Compile Include="Models\Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\StonePosition.cs" />
   </ItemGroup>

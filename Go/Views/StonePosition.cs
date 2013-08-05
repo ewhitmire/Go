@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Go.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml;
@@ -24,6 +25,43 @@ namespace Go
          this.DefaultStyleKey = typeof(StonePosition);
          this.Row = row;
          this.Column = column;
+      }
+
+      /// <summary>
+      /// Gets or sets the visual state of the space.
+      /// </summary>
+      public StoneState SpaceState
+      {
+          get { return (StoneState)GetValue(SpaceStateProperty); }
+          set { SetValue(SpaceStateProperty, value); }
+      }
+
+      /// <summary>
+      /// Identifier for the SpaceState dependency property.
+      /// </summary>
+      public static readonly DependencyProperty SpaceStateProperty =
+          DependencyProperty.Register("SpaceState",
+          typeof(StoneState), typeof(StonePosition),
+          new PropertyMetadata(StoneState.None, SpaceStateChanged));
+
+      /// <summary>
+      /// Updates the visual state of the space to match the changed SpaceState value.
+      /// </summary>
+      /// <param name="d">The source of the property change.</param>
+      /// <param name="e">Details about the property change.</param>
+      private static void SpaceStateChanged(DependencyObject d,
+          DependencyPropertyChangedEventArgs e)
+      {
+          (d as StonePosition).UpdateSpaceState();
+      }
+
+      /// <summary>
+      /// Updates the visual state of the space, optionally using animated transitions.
+      /// </summary>
+      private void UpdateSpaceState()
+      {
+          String pieceState = SpaceState.ToString();
+          VisualStateManager.GoToState(this, pieceState, true);
       }
    }
 }
