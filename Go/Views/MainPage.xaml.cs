@@ -27,13 +27,13 @@ namespace Go
         public MainPage()
         {
             this.InitializeComponent();
-            controller = new GameController();
-            Loaded += MainPage_Loaded;
+            var controller = new GameController();
+            this.DataContext = controller;
         }
 
         void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-           this.GoGrid.PositionClickedEvent += controller.GoGrid_PositionClickedEvent;
+           //this.GoGrid.PositionClickedEvent += controller.GoGrid_PositionClickedEvent;
         }
 
 

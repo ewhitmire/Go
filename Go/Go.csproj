@@ -106,20 +106,21 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Board.cs" />
-    <Compile Include="Color.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="GameController.cs" />
-    <Compile Include="InvalidMoveException.cs" />
-    <Compile Include="GoGrid.cs" />
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Models\Board.cs" />
+    <Compile Include="ViewModels\BoardSpaceState.cs" />
+    <Compile Include="Models\Color.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="ViewModels\GameController.cs" />
+    <Compile Include="Models\InvalidMoveException.cs" />
+    <Compile Include="Views\GoGrid.cs" />
+    <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Move.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Point.cs" />
+    <Compile Include="Models\Move.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StonePosition.cs" />
+    <Compile Include="Views\StonePosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -142,7 +143,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

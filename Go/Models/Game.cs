@@ -16,15 +16,17 @@ namespace Go
         public int WhiteCaptured { get; private set; }
         public int BlackCaptured { get; private set; }
 
-        private Player WhoseTurn; 
+        private Player WhoseTurn;
+        private GameController Controller;
 
-        public Game(int boardSize)
+        public Game(int boardSize, GoGrid grid)
         {
             this.GameBoard = new Board(boardSize);
             this.Player1 = new Player(Color.BLACK);
             this.Player2 = new Player(Color.BLACK);
             this.History = new List<Move>();
             this.WhoseTurn = Player1;
+            //this.Controller = new GameController(grid);
         }
 
         internal void MakeMove(int x, int y)
