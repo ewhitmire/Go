@@ -21,10 +21,21 @@ namespace Go
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        private GameController controller;
+
         public MainPage()
         {
             this.InitializeComponent();
+            controller = new GameController();
+            Loaded += MainPage_Loaded;
         }
+
+        void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+           this.GoGrid.PositionClickedEvent += controller.GoGrid_PositionClickedEvent;
+        }
+
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.

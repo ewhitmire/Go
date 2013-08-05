@@ -16,6 +16,12 @@ namespace Go
 {
    public sealed class GoGrid : Grid
    {
+
+      public delegate void PositionClickedEventHandler(int row, int column);
+
+      public event PositionClickedEventHandler PositionClickedEvent;
+
+
       public GoGrid()
       {
       }
@@ -55,9 +61,10 @@ namespace Go
 
       private void Redraw()
       {
-         double fakeSize = 100;
-         double pixelsPerRow = fakeSize / (Rows-1);
-         double pixelsPerColumn = fakeSize / (Columns-1);
+         double rowThickness = 10;
+         double fakeHeight = rowThickness * (Rows - 1);
+         double fakeWidth = rowThickness * (Columns - 1);
+
 
          SolidColorBrush lineBrush = new SolidColorBrush();
          lineBrush.Color = Colors.Blue;
@@ -67,41 +74,65 @@ namespace Go
          Viewbox b = new Viewbox();
          b.StretchDirection = StretchDirection.Both;
          b.Stretch = Stretch.Uniform;
-         Canvas c = new Canvas();
-         b.Child = c;
+         Canvas canvas = new Canvas();
+         b.Child = canvas;
          this.Children.Add(b);
 
-         c.Height = fakeSize;
-         c.Width = fakeSize;
+         canvas.Height = fakeHeight;
+         canvas.Width = fakeWidth;
 
          for (int r = 0; r < Rows; r++)
          {
             Line l = new Line();
             l.X1 = 0;
-            l.X2 = fakeSize;
-            l.Y1 = pixelsPerRow * r;
+            l.X2 = fakeWidth;
+            l.Y1 = rowThickness * r;
             l.Y2 = l.Y1;
 
             // Set Line's width and color
             l.StrokeThickness = .1;
             l.Stroke = lineBrush;
 
-            c.Children.Add(l);
+            canvas.Children.Add(l);
          }
 
-         for (int r = 0; r < Columns; r++)
+         for (int c = 0; c < Columns; c++)
          {
             Line l = new Line();
-            l.X1 = pixelsPerColumn * r;
+            l.X1 = rowThickness * c;
             l.X2 = l.X1;
             l.Y1 = 0;
-            l.Y2 = fakeSize;
+            l.Y2 = fakeHeight;
 
             // Set Line's width and color
             l.StrokeThickness = .1;
             l.Stroke = lineBrush;
 
-            c.Children.Add(l);
+            canvas.Children.Add(l);
+         }
+
+         for (int r = 0; r < Rows; r++)
+         {
+            for (int c = 0; c < Columns; c++)
+            {
+               StonePosition stone = new StonePosition(r, c);
+               Canvas.SetTop(stone, rowThickness * r);
+               Canvas.SetLeft(stone, rowThickness * c);
+               canvas.Children.Add(stone);
+               stone.Click += stone_Click;
+            }
+         }
+      }
+
+      void stone_Click(object sender, RoutedEventArgs e)
+      {
+         if (sender is StonePosition)
+         {
+            StonePosition s = (StonePosition)sender;
+            if (PositionClickedEvent != null)
+            {
+               PositionClickedEvent(s.Row, s.Column);
+            }
          }
       }
    }

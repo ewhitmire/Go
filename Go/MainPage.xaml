@@ -17,6 +17,6 @@
             <ColumnDefinition Width="1109*"/>
         </Grid.ColumnDefinitions>
         
-        <local:GoGrid Rows="20" Columns="20" Grid.Row="1" Grid.Column="1"/>
+        <local:GoGrid x:Name="GoGrid" Rows="20" Columns="20" Grid.Row="1" Grid.Column="1"/>
     </Grid>
 </Page>
