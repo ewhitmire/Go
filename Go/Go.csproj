@@ -106,7 +106,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Models\Board.cs" />
+    <Compile Include="Models\Space.cs" />
     <Compile Include="ViewModels\BoardSpaceState.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Game.cs" />

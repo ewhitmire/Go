@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Go.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Go
         public MainPage()
         {
             this.InitializeComponent();
-            var controller = new GameController();
+            controller = new GameController(new Game(8));
             this.DataContext = controller;
         }
 

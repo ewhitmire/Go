@@ -17,16 +17,14 @@ namespace Go
         public int BlackCaptured { get; private set; }
 
         private Player WhoseTurn;
-        private GameController Controller;
 
-        public Game(int boardSize, GoGrid grid)
+        public Game(int boardSize)
         {
             this.GameBoard = new Board(boardSize);
             this.Player1 = new Player(Color.BLACK);
             this.Player2 = new Player(Color.BLACK);
             this.History = new List<Move>();
             this.WhoseTurn = Player1;
-            //this.Controller = new GameController(grid);
         }
 
         internal void MakeMove(int x, int y)
@@ -44,6 +42,15 @@ namespace Go
             }
         }
 
+        /// <summary>
+        /// Gets the number of rows in the current game.
+        /// </summary>
+        public int Rows { get { return GameBoard.BoardSize; } }
+
+        /// <summary>
+        /// Gets the number of columns in the current game.
+        /// </summary>
+        public int Columns { get { return GameBoard.BoardSize; } }
 
     }
 

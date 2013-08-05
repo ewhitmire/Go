@@ -8,13 +8,13 @@ namespace Go
 {
     class Board
     {
-        private int boardSize;
+        public int BoardSize { get; private set; }
 
         public Point[,] Grid { get; private set; }
 
         public Board(int boardSize)
         {
-            this.boardSize = boardSize;
+            this.BoardSize = boardSize;
             Grid = new Point[boardSize, boardSize];
         }
 
