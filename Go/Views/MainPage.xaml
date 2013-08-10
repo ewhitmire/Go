@@ -9,14 +9,15 @@
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="155*"/>
-            <RowDefinition Height="613*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="257*"/>
             <ColumnDefinition Width="1109*"/>
         </Grid.ColumnDefinitions>
-        
+
         <local:GoGrid x:Name="GoGrid" Rows="{Binding Rows}" Columns="{Binding Columns}" Grid.Row="1" Grid.Column="1"/>
     </Grid>
 </Page>

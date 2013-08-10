@@ -28,7 +28,7 @@ namespace Go
         public MainPage()
         {
             this.InitializeComponent();
-            controller = new GameController(new Game(8));
+            controller = new GameController(new Game(19));
             this.DataContext = controller;
         }
 

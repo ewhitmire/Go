@@ -68,19 +68,34 @@ namespace Go
 
 
             SolidColorBrush lineBrush = new SolidColorBrush();
-            lineBrush.Color = Colors.Blue;
+            lineBrush.Color = Colors.Black;
+
+            SolidColorBrush backgroundBrush = new SolidColorBrush();
+            backgroundBrush.Color = Colors.Tan;
 
             this.Children.Clear();
+
+            ScrollViewer scroll = new ScrollViewer();
+            scroll.HorizontalScrollMode = ScrollMode.Enabled;
+            scroll.VerticalScrollMode = ScrollMode.Enabled;
+            scroll.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            scroll.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            scroll.ZoomMode = ZoomMode.Enabled;
+            scroll.MinZoomFactor = 1;
 
             Viewbox b = new Viewbox();
             b.StretchDirection = StretchDirection.Both;
             b.Stretch = Stretch.Uniform;
-            Canvas canvas = new Canvas();
-            b.Child = canvas;
-            this.Children.Add(b);
 
+
+            Canvas canvas = new Canvas();
+            canvas.Background = backgroundBrush;
             canvas.Height = fakeHeight;
             canvas.Width = fakeWidth;
+
+            this.Children.Add(scroll);
+            scroll.Content = b;
+            b.Child = canvas;
 
             for (int r = 0; r < Rows; r++)
             {

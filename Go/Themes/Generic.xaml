@@ -8,7 +8,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:StonePosition">
                     <Canvas>
-
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="PieceStates">
                                 <VisualStateGroup.Transitions>
@@ -38,26 +37,27 @@
                                         <VisualTransition.GeneratedEasingFunction>
                                             <BackEase EasingMode="EaseInOut"/>
                                         </VisualTransition.GeneratedEasingFunction>
-                                    </VisualTransition>
-                                    
+                                    </VisualTransition>    
                                 </VisualStateGroup.Transitions>
+                                
                                 <VisualState x:Name="None"/>
                                 <VisualState x:Name="PlayerOne">
                                     <Storyboard>
                                         <ColorAnimation Duration="0" To="#FFFFFF" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="stone"/>
-                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="stone"/>
+                                        <DoubleAnimation Duration="0:0:0.4" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="stone"/>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="PlayerTwo">
                                     <Storyboard>
                                         <ColorAnimation Duration="0" To="#000000" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="stone"/>
-                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="stone"/>
+                                        <DoubleAnimation Duration="0:0:0.4" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="stone"/>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
 
                         </VisualStateManager.VisualStateGroups>
-                        <Ellipse x:Name="stone" Width="3" Height="3" Stroke="Blue" Fill="Transparent" Canvas.Left="-1.5" Canvas.Top="-1.5" StrokeThickness="0.1"></Ellipse>
+                        <Ellipse x:Name="stone" Width="3" Height="3" Stroke="Transparent" Fill="Transparent" Canvas.Left="-1.5" Canvas.Top="-1.5" StrokeThickness="0.1"></Ellipse>
+                        <Ellipse x:Name="hitZone" Width="8" Height="8" Stroke="Transparent" Fill="Transparent" Canvas.Left="-4" Canvas.Top="-4" StrokeThickness="0.1"></Ellipse>
                     </Canvas>
                 </ControlTemplate>
             </Setter.Value>

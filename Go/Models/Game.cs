@@ -30,16 +30,23 @@ namespace Go
 
         internal void MakeMove(int x, int y)
         {
-            GameBoard.PlacePiece(WhoseTurn,x,y);
+            try
+            {
+                GameBoard.PlacePiece(WhoseTurn, x, y);
 
-            // Switch turns
-            if(WhoseTurn == Player1)
-            {
-                WhoseTurn = Player2;
+                // Switch turns
+                if (WhoseTurn == Player1)
+                {
+                    WhoseTurn = Player2;
+                }
+                else
+                {
+                    WhoseTurn = Player1;
+                }
             }
-            else
+            catch (InvalidMoveException e)
             {
-                WhoseTurn = Player1;
+                // NOOP;
             }
         }
 

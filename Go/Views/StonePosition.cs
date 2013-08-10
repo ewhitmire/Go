@@ -13,55 +13,61 @@ using Windows.UI.Xaml.Media;
 
 namespace Go
 {
-   public sealed class StonePosition : Button
-   {
+    public sealed class StonePosition : Button
+    {
 
-      public int Row { get; private set; }
+        public int Row { get; private set; }
 
-      public int Column { get; private set; }
+        public int Column { get; private set; }
 
-      public StonePosition(int row, int column)
-      {
-         this.DefaultStyleKey = typeof(StonePosition);
-         this.Row = row;
-         this.Column = column;
-      }
+        public StonePosition(int row, int column)
+        {
+            this.DefaultStyleKey = typeof(StonePosition);
+            this.Row = row;
+            this.Column = column;
+            this.Tapped += StonePosition_Tapped;
+        }
 
-      /// <summary>
-      /// Gets or sets the visual state of the space.
-      /// </summary>
-      public StoneState SpaceState
-      {
-          get { return (StoneState)GetValue(SpaceStateProperty); }
-          set { SetValue(SpaceStateProperty, value); }
-      }
+        void StonePosition_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Command.Execute(this.CommandParameter);
+        }
 
-      /// <summary>
-      /// Identifier for the SpaceState dependency property.
-      /// </summary>
-      public static readonly DependencyProperty SpaceStateProperty =
-          DependencyProperty.Register("SpaceState",
-          typeof(StoneState), typeof(StonePosition),
-          new PropertyMetadata(StoneState.None, SpaceStateChanged));
+        /// <summary>
+        /// Gets or sets the visual state of the space.
+        /// </summary>
+        public StoneState SpaceState
+        {
+            get { return (StoneState)GetValue(SpaceStateProperty); }
+            set { SetValue(SpaceStateProperty, value); }
+        }
 
-      /// <summary>
-      /// Updates the visual state of the space to match the changed SpaceState value.
-      /// </summary>
-      /// <param name="d">The source of the property change.</param>
-      /// <param name="e">Details about the property change.</param>
-      private static void SpaceStateChanged(DependencyObject d,
-          DependencyPropertyChangedEventArgs e)
-      {
-          (d as StonePosition).UpdateSpaceState();
-      }
+        /// <summary>
+        /// Identifier for the SpaceState dependency property.
+        /// </summary>
+        public static readonly DependencyProperty SpaceStateProperty =
+            DependencyProperty.Register("SpaceState",
+            typeof(StoneState), typeof(StonePosition),
+            new PropertyMetadata(StoneState.None, SpaceStateChanged));
 
-      /// <summary>
-      /// Updates the visual state of the space, optionally using animated transitions.
-      /// </summary>
-      private void UpdateSpaceState()
-      {
-          String pieceState = SpaceState.ToString();
-          VisualStateManager.GoToState(this, pieceState, true);
-      }
-   }
+        /// <summary>
+        /// Updates the visual state of the space to match the changed SpaceState value.
+        /// </summary>
+        /// <param name="d">The source of the property change.</param>
+        /// <param name="e">Details about the property change.</param>
+        private static void SpaceStateChanged(DependencyObject d,
+            DependencyPropertyChangedEventArgs e)
+        {
+            (d as StonePosition).UpdateSpaceState();
+        }
+
+        /// <summary>
+        /// Updates the visual state of the space, optionally using animated transitions.
+        /// </summary>
+        private void UpdateSpaceState()
+        {
+            String pieceState = SpaceState.ToString();
+            VisualStateManager.GoToState(this, pieceState, true);
+        }
+    }
 }
