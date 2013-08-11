@@ -81,7 +81,7 @@ namespace Go
             scroll.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
             scroll.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
             scroll.ZoomMode = ZoomMode.Enabled;
-            scroll.MinZoomFactor = 1;
+            scroll.MinZoomFactor = (float)(this.ActualHeight / fakeHeight);
 
             Viewbox b = new Viewbox();
             b.StretchDirection = StretchDirection.Both;
@@ -94,8 +94,8 @@ namespace Go
             canvas.Width = fakeWidth;
 
             this.Children.Add(scroll);
-            scroll.Content = b;
-            b.Child = canvas;
+            scroll.Content = canvas;//b;
+            //b.Child = canvas;
 
             for (int r = 0; r < Rows; r++)
             {
