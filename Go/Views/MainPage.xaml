@@ -9,15 +9,17 @@
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="20*"/>
-            <RowDefinition/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="257*"/>
-            <ColumnDefinition Width="1109*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
 
-        <local:GoGrid x:Name="GoGrid" Rows="{Binding Rows}" Columns="{Binding Columns}" Grid.Row="1" Grid.Column="1"/>
+        <local:GoGrid x:Name="GoGrid" Rows="{Binding Rows}" Columns="{Binding Columns}" Grid.Row="1" Grid.Column="2"/>
     </Grid>
 </Page>

@@ -28,8 +28,8 @@
                             </VisualStateGroup>
 
                         </VisualStateManager.VisualStateGroups>
-                        <Ellipse x:Name="stone" Width="3" Height="3" Stroke="Transparent" Fill="Transparent" Canvas.Left="-1.5" Canvas.Top="-1.5" StrokeThickness="0.1"></Ellipse>
-                        <Ellipse x:Name="hitZone" Width="8" Height="8" Stroke="Transparent" Fill="Transparent" Canvas.Left="-4" Canvas.Top="-4" StrokeThickness="0.1"></Ellipse>
+                        <Ellipse x:Name="stone" Width="7" Height="7" Stroke="Transparent" Fill="Transparent" Canvas.Left="-3.5" Canvas.Top="-3.5" StrokeThickness="0.1"></Ellipse>
+                        <Ellipse x:Name="hitZone" Width="9" Height="9" Stroke="Transparent" Fill="Transparent" Canvas.Left="-4.5" Canvas.Top="-4.5" StrokeThickness="0.1"></Ellipse>
                     </Canvas>
                 </ControlTemplate>
             </Setter.Value>
