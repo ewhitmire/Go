@@ -54,7 +54,7 @@ namespace Go.ViewModels
             int row = Int32.Parse(rc[0]);
             int col = Int32.Parse(rc[1]);
 
-            return Game.GameBoard.Grid[row, col];
+            return Game.GameBoard.Grid[row, col].State;
         }
 
         public StoneState this[String index] { get { return GetStoneState(index); } }

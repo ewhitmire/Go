@@ -10,47 +10,19 @@
                     <Canvas>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="PieceStates">
-                                <VisualStateGroup.Transitions>
-                                    <VisualTransition From="PlayerOne" To="PlayerTwo" GeneratedDuration="0:0:0.4">
-                                        <VisualTransition.GeneratedEasingFunction>
-                                            <CircleEase EasingMode="EaseInOut"/>
-                                        </VisualTransition.GeneratedEasingFunction>
-                                        <Storyboard>
-                                            <ColorAnimation BeginTime="0:0:0.2" Duration="0" To="#FFFFFF" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="stone"/>
-                                        </Storyboard>
-                                    </VisualTransition>
-                                    <VisualTransition From="PlayerTwo" To="PlayerOne" GeneratedDuration="0:0:0.4">
-                                        <VisualTransition.GeneratedEasingFunction>
-                                            <CircleEase EasingMode="EaseInOut"/>
-                                        </VisualTransition.GeneratedEasingFunction>
-                                        <Storyboard>
-                                            <ColorAnimation BeginTime="0:0:0.2" Duration="0" To="#000000" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="stone"/>
-                                        </Storyboard>
-                                    </VisualTransition>
-                                    
-                                    <VisualTransition To="None" GeneratedDuration="0:0:0.4">
-                                        <VisualTransition.GeneratedEasingFunction>
-                                            <BackEase EasingMode="EaseInOut"/>
-                                        </VisualTransition.GeneratedEasingFunction>
-                                    </VisualTransition>
-                                    <VisualTransition From="None" GeneratedDuration="0:0:0.4">
-                                        <VisualTransition.GeneratedEasingFunction>
-                                            <BackEase EasingMode="EaseInOut"/>
-                                        </VisualTransition.GeneratedEasingFunction>
-                                    </VisualTransition>    
-                                </VisualStateGroup.Transitions>
+                                
                                 
                                 <VisualState x:Name="None"/>
                                 <VisualState x:Name="PlayerOne">
                                     <Storyboard>
                                         <ColorAnimation Duration="0" To="#FFFFFF" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="stone"/>
-                                        <DoubleAnimation Duration="0:0:0.4" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="stone"/>
+                                        <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="stone"/>
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="PlayerTwo">
                                     <Storyboard>
                                         <ColorAnimation Duration="0" To="#000000" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="stone"/>
-                                        <DoubleAnimation Duration="0:0:0.4" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="stone"/>
+                                        <DoubleAnimation Duration="0:0:0.2" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="stone"/>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>

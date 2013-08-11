@@ -28,11 +28,11 @@ namespace Go
             this.WhoseTurn = Player1;
         }
 
-        internal void MakeMove(int x, int y)
+        internal void MakeMove(int r, int c)
         {
             try
             {
-                GameBoard.PlacePiece(WhoseTurn, x, y);
+                GameBoard.PlacePiece(WhoseTurn, r, c);
 
                 // Switch turns
                 if (WhoseTurn == Player1)
@@ -49,6 +49,8 @@ namespace Go
                 // NOOP;
             }
         }
+
+
 
         /// <summary>
         /// Gets the number of rows in the current game.
