@@ -27,22 +27,26 @@ namespace Go.Models
 
         public StoneSpace Up()
         {
-            return board.Grid[Row - 1, Column];
+            // Return null if Upper neighbor is off the board
+            return (Row-1 < 0) ? null : board.Grid[Row - 1, Column];
         }
 
         public StoneSpace Down()
         {
-            return board.Grid[Row + 1, Column];
+            // Return null if Lower neighbor is off the board
+            return (Row+1 > (board.BoardSize-1)) ? null : board.Grid[Row + 1, Column];
         }
 
         public StoneSpace Left()
         {
-            return board.Grid[Row, Column - 1];
+            // Return null if Left neighbor is off the board
+            return (Column-1 < 0) ? null : board.Grid[Row, Column - 1];
         }
 
         public StoneSpace Right()
         {
-            return board.Grid[Row, Column + 1];
+            // Return null if Right neighbor is off the board
+            return (Column+1 > (board.BoardSize-1)) ? null : board.Grid[Row, Column + 1];
         }
 
         internal void SetState(StoneState stoneState)
@@ -76,6 +80,8 @@ namespace Go.Models
             list.Add(Down());
             list.Add(Left());
             list.Add(Right());
+            // Remove null neighbors (aka edges)
+            list.RemoveAll(neighbor => neighbor == null);
             return list.AsEnumerable();
         }
 
