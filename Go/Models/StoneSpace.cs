@@ -72,6 +72,22 @@ namespace Go.Models
             return !(a == b);
         }
 
+        public override bool Equals(object obj)
+        {
+            var item = obj as StoneSpace;
+
+            if (item == null)
+            {
+                return false;
+            }
+
+            return this.State.Equals(item.State);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.State.GetHashCode();
+        }
 
         internal IEnumerable<StoneSpace> Neighbors()
         {

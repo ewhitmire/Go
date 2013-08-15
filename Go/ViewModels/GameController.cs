@@ -35,6 +35,7 @@ namespace Go.ViewModels
         public Game Game { get; private set; }
 
         private RelayCommand<Space> _moveCommand;
+        private RelayCommand<Space> _undoCommand;
 
         /// <summary>
         /// Gets the command for performing a move.
@@ -48,6 +49,18 @@ namespace Go.ViewModels
             }
         }
 
+        /// <summary>
+        /// Gets the command for performing an undo.
+        /// </summary>
+        public RelayCommand<Space> UndoCommand
+        {
+            get
+            {
+                return _undoCommand ?? (_undoCommand =
+                    new RelayCommand<Space>(p => Game.UndoMove()));
+            }
+        }
+
         private StoneState GetStoneState(String index)
         {
             var rc = index.Split(',');
@@ -58,5 +71,6 @@ namespace Go.ViewModels
         }
 
         public StoneState this[String index] { get { return GetStoneState(index); } }
+
     }
 }

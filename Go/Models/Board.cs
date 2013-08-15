@@ -26,12 +26,14 @@ namespace Go
 
         public int BoardSize { get; private set; }
 
-        public StoneSpace[,] Grid { get; private set; }
+        public StoneSpace[,] Grid { get; set; }
+        // public StoneSpace[,] PrevGrid { get; private set; }
 
         public Board(int boardSize)
         {
             this.BoardSize = boardSize;
             Grid = new StoneSpace[boardSize, boardSize];
+            // PrevGrid = new StoneSpace[boardSize, boardSize];
             for (int r = 0; r < boardSize; r++)
             {
                 for (int c = 0; c < boardSize; c++)
@@ -41,15 +43,21 @@ namespace Go
             }
         }
 
-        internal void PlacePiece(Player WhoseTurn, int r, int c)
+        internal void PlacePieceByPlayer(Player WhoseTurn, int r, int c)
+        {
+            if (IsNotOnTopOfAnotherStone(Grid[r,c]))
+            {
+                PlacePiece(WhoseTurn.MyColor.ToStoneState(), r, c);
+            }
+        }
+
+        internal void PlacePiece(StoneState state, int r, int c)
         {
             StoneSpace stone = Grid[r, c];
             try
             {
-                if (IsValidMove(WhoseTurn, stone))
                 {
                     // TODO: Fix color -> id conversion
-                    StoneState state = WhoseTurn.MyColor.ToStoneState();
                     stone.SetState(state);
 
                     ISet<Chain> captures = FindCaptures(stone, state);
@@ -65,10 +73,8 @@ namespace Go
                         Capture(chain);
                     }
 
-                }
-                else
-                {
-                    throw new InvalidMoveException();
+                    // PrevGrid = Grid;
+
                 }
             }
             catch (InvalidMoveException e)
@@ -133,14 +139,12 @@ namespace Go
             return chain;
         }
 
-        private bool IsValidMove(Player WhoseTurn, StoneSpace stone)
+        private bool IsNotOnTopOfAnotherStone(StoneSpace stone)
         {
             if (stone != StoneState.None)
             {
                 return false;
             }
-
-            // TODO: KO rule
             return true;
         }
 
